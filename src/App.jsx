@@ -1,0 +1,95 @@
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Card, CardContent } from '@/components/ui/card'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+
+const EXERCISES = [
+  {
+    key: 'penguin',
+    title: 'Penguin Walks',
+    icon: '🐧',
+    description: 'Waddle like a penguin: heels together, toes out. Take small side-to-side steps with your arms at your sides like tiny flippers.',
+    audio: 'music/penguin parade 1.mp3',
+    image: 'images/penguin walk.png',
+  },
+  {
+    key: 'soccer',
+    title: 'Soccer Kicks',
+    icon: '⚽',
+    description: 'Stand tall and gently swing your leg forward like a kick. Alternate legs. Keep kicks low and controlled.',
+    audio: 'music/kick it up 1.mp3',
+    image: 'images/soccer kicks.png',
+  },
+  {
+    key: 'frog',
+    title: 'Frog Hops',
+    icon: '🐸',
+    description: 'Squat down with hands on the floor, then push through your legs to hop forward softly like a frog.',
+    audio: 'music/froggy fiesta.mp3',
+    image: 'https://placehold.co/400x250?text=Frog+Hops',
+  },
+  {
+    key: 'butterfly',
+    title: 'Butterfly Sits',
+    icon: '🦋',
+    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    audio: 'music/butterfly sit 1.mp3',
+    image: 'https://placehold.co/400x250?text=Butterfly+Sits',
+  },
+]
+
+export default function App() {
+  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState(null)
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white text-gray-900">
+      <header className="max-w-5xl mx-auto px-6 py-10 flex items-center justify-between">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Move & Play</h1>
+        <div className="text-sm text-gray-600">Click a card to learn & listen</div>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-6 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {EXERCISES.map(ex => (
+            <motion.div key={ex.key} whileHover={{ y: -4, scale: 1.02 }} whileTap={{ scale: 0.98 }} className="cursor-pointer"
+              onClick={() => { setActive(ex); setOpen(true) }}>
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-6 flex flex-col items-center justify-center h-44">
+                  <div className="text-6xl mb-3" aria-hidden>{ex.icon}</div>
+                  <div className="text-lg font-semibold text-center">{ex.title}</div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </main>
+
+      <footer className="max-w-5xl mx-auto px-6 pb-10 text-xs text-gray-500">
+        Tip: Replace the audio and image URLs inside EXERCISES with your own.
+      </footer>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        {active && (
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle className="text-2xl">{active.title}</DialogTitle>
+              <DialogDescription className="text-base text-gray-700">{active.description}</DialogDescription>
+            </DialogHeader>
+            <div className="mt-4">
+              <img src={active.image} alt={active.title} className="w-full rounded-lg mb-4 object-cover" />
+              <audio controls className="w-full">
+                <source src={active.audio} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+            <div className="flex justify-end gap-2 mt-4">
+              <Button variant="secondary" onClick={() => setOpen(false)}>Close</Button>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
+    </div>
+  )
+}
