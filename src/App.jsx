@@ -10,32 +10,64 @@ const EXERCISES = [
     title: 'Penguin Walks',
     icon: '🐧',
     description: 'Waddle like a penguin: heels together, toes out. Take small side-to-side steps with your arms at your sides like tiny flippers.',
-    audio: 'music/penguin parade 1.mp3',
-    image: 'images/penguin walk.png',
+    audio: 'music/penguin.mp3',
+    image: 'images/penguin.png',
   },
   {
     key: 'soccer',
     title: 'Soccer Kicks',
     icon: '⚽',
     description: 'Stand tall and gently swing your leg forward like a kick. Alternate legs. Keep kicks low and controlled.',
-    audio: 'music/kick it up 1.mp3',
-    image: 'images/soccer kicks.png',
+    audio: 'music/soccer.mp3',
+    image: 'images/soccer.png',
   },
   {
     key: 'frog',
     title: 'Frog Hops',
     icon: '🐸',
     description: 'Squat down with hands on the floor, then push through your legs to hop forward softly like a frog.',
-    audio: 'music/froggy fiesta.mp3',
-    image: 'https://placehold.co/400x250?text=Frog+Hops',
+    audio: 'music/frog.mp3',
+    image: 'images/frog.png',
   },
   {
     key: 'butterfly',
     title: 'Butterfly Sits',
     icon: '🦋',
     description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
-    audio: 'music/butterfly sit 1.mp3',
-    image: 'https://placehold.co/400x250?text=Butterfly+Sits',
+    audio: 'music/butterfly.mp3',
+    image: 'images/butterfly.png',
+  },
+  {
+    key: 'ninja',
+    title: 'Ninja Crouch',
+    icon: '🥷',
+    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    audio: 'music/ninja.mp3',
+    image: 'images/ninja.png',
+  },
+  {
+    key: 'heel',
+    title: 'Heel Walks',
+    icon: '🦶',
+    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    audio: 'music/heel.mp3',
+    image: 'images/heel.png',
+  },
+  {
+    key: 'flamingo',
+    title: 'Flamingo Foot',
+    icon: '🦩',
+    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    audio: 'music/flamingo.mp3',
+    image: 'images/flamingo.png',
+  },
+  {
+    key: 'crab',
+    title: 'Crab Walk',
+    icon: '🦀',
+    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    audio: 'music/crab.mp3',
+    image: 'images/crab.png',
   },
 ]
 
@@ -79,7 +111,7 @@ export default function App() {
             </DialogHeader>
             <div className="mt-4">
               <img src={active.image} alt={active.title} className="w-full rounded-lg mb-4 object-cover" />
-              <audio controls className="w-full">
+              <audio autoPlaycontrols className="w-full">
                 <source src={active.audio} type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
