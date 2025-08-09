@@ -69,6 +69,14 @@ const EXERCISES = [
     audio: 'music/crab.mp3',
     image: 'images/crab.png',
   },
+    {
+    key: 'bear',
+    title: 'Bear Crawl',
+    icon: '🐻',
+    description: 'Get on all fours and crawl like a bear, moving opposite arms and legs together.',
+    audio: 'music/bear.mp3',
+    image: 'images/bear.png',
+  },
 ]
 
 export default function App() {
