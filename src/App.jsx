@@ -111,7 +111,7 @@ export default function App() {
             </DialogHeader>
             <div className="mt-4">
               <img src={active.image} alt={active.title} className="w-full rounded-lg mb-4 object-cover" />
-              <audio autoPlaycontrols className="w-full">
+              <audio autoPlay controls className="w-full">
                 <source src={active.audio} type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
