@@ -41,7 +41,7 @@ const EXERCISES = [
     key: 'ninja',
     title: 'Ninja Crouch',
     icon: '🥷',
-    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    description: 'Bend your knees low and tiptoe quietly like a sneaky ninja, ready for action!',
     audio: 'music/ninja.mp3',
     image: 'images/ninja.png',
   },
@@ -49,7 +49,7 @@ const EXERCISES = [
     key: 'heel',
     title: 'Heel Walks',
     icon: '🦶',
-    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    description: 'Lift your toes up and walk only on your heels — just like a penguin in funny shoes!',
     audio: 'music/heel.mp3',
     image: 'images/heel.png',
   },
@@ -57,7 +57,7 @@ const EXERCISES = [
     key: 'flamingo',
     title: 'Flamingo Foot',
     icon: '🦩',
-    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    description: 'Stand tall on one foot, then switch! Balance like a flamingo enjoying the sunshine.',
     audio: 'music/flamingo.mp3',
     image: 'images/flamingo.png',
   },
@@ -65,7 +65,7 @@ const EXERCISES = [
     key: 'crab',
     title: 'Crab Walk',
     icon: '🦀',
-    description: 'Sit with the soles of your feet together. Gently flap your knees like butterfly wings while keeping your back tall.',
+    description: 'Sit on the floor, hands and feet down, then lift your hips and scuttle sideways like a happy crab.',
     audio: 'music/crab.mp3',
     image: 'images/crab.png',
   },
@@ -78,7 +78,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white text-gray-900">
       <header className="max-w-5xl mx-auto px-6 py-10 flex items-center justify-between">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Move & Play</h1>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Physio Fun</h1>
         <div className="text-sm text-gray-600">Click a card to learn & listen</div>
       </header>
 
@@ -99,7 +99,7 @@ export default function App() {
       </main>
 
       <footer className="max-w-5xl mx-auto px-6 pb-10 text-xs text-gray-500">
-        Tip: Replace the audio and image URLs inside EXERCISES with your own.
+        Made with ❤️ by Mama and Dada
       </footer>
 
       <Dialog open={open} onOpenChange={setOpen}>
