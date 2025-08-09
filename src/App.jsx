@@ -112,7 +112,7 @@ export default function App() {
 
       <Dialog open={open} onOpenChange={setOpen}>
         {active && (
-          <DialogContent>
+          <DialogContent className="max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="text-2xl">{active.title}</DialogTitle>
               <DialogDescription className="text-base text-gray-700">{active.description}</DialogDescription>
