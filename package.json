@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "docker:build": "docker build -t physio_fun .",
-    "docker:run": "docker run --name physio_fun -p 5173:80 physio_fun"
+    "docker:run": "docker run -d --name physio_fun -p 5173:80 physio_fun"
   },
   "dependencies": {
     "framer-motion": "^11.2.6",
