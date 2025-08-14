@@ -93,6 +93,14 @@ const EXERCISES = [
     audio: 'music/duck.mp3',
     image: 'images/duck.png',
   },
+  {
+    key: 'turtle',
+    title: 'Rocking Turtle',
+    icon: '🐢',
+    description: 'Lay on your back with your feet together and knees apart. Rock gently side to side like a turtle in its shell.',
+    audio: 'music/turtle.mp3',
+    image: 'images/turtle.png',
+  },
 ]
 
 export default function App() {
