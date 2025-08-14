@@ -77,6 +77,14 @@ const EXERCISES = [
     audio: 'music/bear.mp3',
     image: 'images/bear.png',
   },
+  {
+    key: 'crane',
+    title: 'Crane Truck',
+    icon: '🏗️',
+    description: 'Stand tall like a crane, grab your load from the ground, and lift it up high to the sky!',
+    audio: 'music/crane.mp3',
+    image: 'images/crane.png',
+  },
 ]
 
 export default function App() {
