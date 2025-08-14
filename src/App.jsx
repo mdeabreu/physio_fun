@@ -69,7 +69,7 @@ const EXERCISES = [
     audio: 'music/crab.mp3',
     image: 'images/crab.png',
   },
-    {
+  {
     key: 'bear',
     title: 'Bear Crawl',
     icon: '🐻',
@@ -84,6 +84,14 @@ const EXERCISES = [
     description: 'Stand tall like a crane, grab your load from the ground, and lift it up high to the sky!',
     audio: 'music/crane.mp3',
     image: 'images/crane.png',
+  },
+  {
+    key: 'duck',
+    title: 'Duck Waddle',
+    icon: '🦆',
+    description: 'Waddle like a duck: feet together, knees out, and arms tucked behind your back. Quack, quack!',
+    audio: 'music/duck.mp3',
+    image: 'images/duck.png',
   },
 ]
 
