@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -107,6 +107,56 @@ export default function App() {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(null)
 
+  // Quick lookup by key for URL syncing
+  const EX_BY_KEY = useMemo(() => Object.fromEntries(EXERCISES.map(e => [e.key, e])), [])
+  const BASE_TITLE = 'Physio Fun'
+
+  // Sync modal state from the current URL (supports direct links and back/forward)
+  useEffect(() => {
+    const syncFromURL = () => {
+      const params = new URLSearchParams(window.location.search)
+      const key = params.get('exercise')
+      if (key && EX_BY_KEY[key]) {
+        setActive(EX_BY_KEY[key])
+        setOpen(true)
+        document.title = `${BASE_TITLE} - ${EX_BY_KEY[key].title}`
+      } else {
+        setActive(null)
+        setOpen(false)
+        document.title = BASE_TITLE
+      }
+    }
+
+    // Initial load
+    syncFromURL()
+
+    // Respond to history navigation
+    const onPop = () => syncFromURL()
+    window.addEventListener('popstate', onPop)
+    return () => {
+      window.removeEventListener('popstate', onPop)
+      document.title = BASE_TITLE
+    }
+  }, [EX_BY_KEY])
+
+  const openModal = (ex) => {
+    setActive(ex)
+    setOpen(true)
+    const url = new URL(window.location)
+    url.searchParams.set('exercise', ex.key)
+    window.history.pushState({ exercise: ex.key }, '', url)
+    document.title = `${BASE_TITLE} - ${ex.title}`
+  }
+
+  const closeModal = () => {
+    setOpen(false)
+    setActive(null)
+    const url = new URL(window.location)
+    url.searchParams.delete('exercise')
+    window.history.pushState({}, '', url)
+    document.title = BASE_TITLE
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white text-gray-900">
       <header className="max-w-5xl mx-auto px-6 py-10 flex items-center justify-between">
@@ -118,7 +168,7 @@ export default function App() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {EXERCISES.map(ex => (
             <motion.div key={ex.key} whileHover={{ y: -4, scale: 1.02 }} whileTap={{ scale: 0.98 }} className="cursor-pointer"
-              onClick={() => { setActive(ex); setOpen(true) }}>
+              onClick={() => openModal(ex)}>
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-6 flex flex-col items-center justify-center h-44">
                   <div className="text-6xl mb-3" aria-hidden>{ex.icon}</div>
@@ -134,7 +184,10 @@ export default function App() {
         Made with ❤️ by Mama and Dada
       </footer>
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={(value) => {
+        if (!value) closeModal();
+        else setOpen(true)
+      }}>
         {active && (
           <DialogContent className="max-h-[80vh] overflow-y-auto">
             <DialogHeader>
@@ -149,7 +202,7 @@ export default function App() {
               </audio>
             </div>
             <div className="flex justify-end gap-2 mt-4">
-              <Button variant="secondary" onClick={() => setOpen(false)}>Close</Button>
+              <Button variant="secondary" onClick={closeModal}>Close</Button>
             </div>
           </DialogContent>
         )}
