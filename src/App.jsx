@@ -12,6 +12,7 @@ const EXERCISES = [
     description: 'Waddle like a penguin: heels together, toes out. Take small side-to-side steps with your arms at your sides like tiny flippers.',
     audio: 'music/penguin.mp3',
     image: 'images/penguin.png',
+    video: 'videos/penguin.mp4'
   },
   {
     key: 'soccer',
@@ -195,7 +196,21 @@ export default function App() {
               <DialogDescription className="text-base text-gray-700">{active.description}</DialogDescription>
             </DialogHeader>
             <div className="mt-4">
-              <img src={active.image} alt={active.title} className="w-full rounded-lg mb-4 object-cover" />
+              {active.video ? (
+                <video
+                  className="w-full rounded-lg mb-4 object-cover"
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src={active.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img src={active.image} alt={active.title} className="w-full rounded-lg mb-4 object-cover" />
+              )}
               <audio autoPlay controls className="w-full">
                 <source src={active.audio} type="audio/mpeg" />
                 Your browser does not support the audio element.
